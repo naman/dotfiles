@@ -1,6 +1,6 @@
 # Defined in /var/folders/cn/yhht0w1n2qzc3j09scgf2s640000gn/T//fish.jZVIDx/setup.fish @ line 2
 function setup
-	abbr mci mvn clean install
+	# abbr mci mvn clean install
     abbr g git
     abbr gf git fetch
     abbr gs git status

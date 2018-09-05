@@ -5,6 +5,6 @@ function up
     brew upgrade
     brew cleanup
     brew cask cleanup
-    sudo gem update --system
-    sudo gem update
+    # sudo gem update --system
+    # sudo gem update
 end
