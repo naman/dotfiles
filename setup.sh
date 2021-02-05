@@ -1,8 +1,8 @@
 #!/bin/bash
 
-set -e
-
 cd 
+
+wget https://raw.githubusercontent.com/rupa/z/master/z.sh -O ~/.z
 
 # FISH
 # # setup fish config
