@@ -30,6 +30,8 @@ git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM
 
 ln -s -f  ~/dotfiles/.zshrc ~/.zshrc 
 
+chsh -s $(which zsh)
+
 # # setup tmux config
 # brew install tmux
 sudo apt install -y tmux
