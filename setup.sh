@@ -2,7 +2,12 @@
 
 cd 
 
+# essentials
 wget https://raw.githubusercontent.com/rupa/z/master/z.sh -O ~/.z
+
+sudo apt install -y git curl wget ssh vim build-essentials python3 python3-pip
+
+pip3 install virtualenvwrapper
 
 # FISH
 # # setup fish config
