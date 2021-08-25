@@ -108,4 +108,4 @@ alias zshconfig="code ~/dotfiles/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Virtualenvwrapper
-export WORKON_HOME=~/Envs
+export WORKON_HOME=~/virtualenvs
