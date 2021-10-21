@@ -200,6 +200,7 @@ export ARCHFLAGS="-arch x86_64"
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
+alias c='code .'
 alias zshconfig='code ~/.zshrc'
 alias ohmyzsh='code ~/.oh-my-zsh'
 alias chug='brew update && { brew upgrade; brew upgrade --cask; }; brew autoremove; brew cleanup; brew doctor'
