@@ -1,3 +1,8 @@
+
+#### FIG ENV VARIABLES ####
+# Please make sure this block is at the start of this file.
+[ -s ~/.fig/shell/pre.sh ] && source ~/.fig/shell/pre.sh
+#### END FIG ENV VARIABLES ####
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -125,7 +130,7 @@ plugins=(
   z
   # zsh_reload
   zsh-interactive-cd
-  zsh-navigation-tools
+  # zsh-navigation-tools
 )
 
 
@@ -142,7 +147,6 @@ source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/local/share/zsh-you-should-use/you-should-use.plugin.zsh
 #source /usr/local/share/zsh-navigation-tools/zsh-navigation-tools.plugin.zsh
-#source /usr/local/opt/zsh-git-prompt/zshrc.sh
 
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern root line)
@@ -201,16 +205,13 @@ export ARCHFLAGS="-arch x86_64"
 #
 # Example aliases
 alias c='code .'
+alias l='exa'
+alias j='fx'
+alias cat='bat'
 alias zshconfig='code ~/.zshrc'
 alias ohmyzsh='code ~/.oh-my-zsh'
 alias chug='brew update && { brew upgrade; brew upgrade --cask; }; brew autoremove; brew cleanup; brew doctor'
 export HOMEBREW_NO_AUTO_UPDATE=1
-
-alias clang='clang-12'
-export PATH="/usr/local/opt/llvm/bin:$PATH"
-export LDFLAGS="-L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib"
-export CPPFLAGS="-I/usr/local/opt/llvm/include"
-export LLVM_COMPILER="clang-12"
 
 export PATH="$HOME/bin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/sbin:$PATH"
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
@@ -231,3 +232,15 @@ export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
 source /usr/local/bin/virtualenvwrapper_lazy.sh
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+export PATH="/usr/local/opt/python@3.7/bin:$PATH"
+
+export PATH="/usr/local/opt/ruby@2/bin:/usr/local/lib/ruby/gems/2.7.0/bin:$HOME/.gem/ruby/2.7.0/bin:$PATH"
+
+export LDFLAGS="-L/usr/local/opt/llvm@12/lib"
+export CPPFLAGS="-I/usr/local/opt/llvm@12/include"
+export PATH="/usr/local/opt/llvm@12/bin:$PATH"
+
+#### FIG ENV VARIABLES ####
+# Please make sure this block is at the end of this file.
+[ -s ~/.fig/fig.sh ] && source ~/.fig/fig.sh
+#### END FIG ENV VARIABLES ####
