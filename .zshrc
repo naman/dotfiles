@@ -104,7 +104,7 @@ plugins=(
   #globalias
   # gnu-utils
 #   gpg-agent
-  history-substring-search
+  # zsh-completions
   #jsontools
   #keychain
 #   kubectl
@@ -131,6 +131,9 @@ plugins=(
   # zsh_reload
   # zsh-interactive-cd
   # zsh-navigation-tools
+  zsh-autosuggestions
+  zsh-history-substring-search
+  zsh-syntax-highlighting
 )
 
 
@@ -142,13 +145,12 @@ source $ZSH/oh-my-zsh.sh
 setopt histignorespace
 setopt extendedglob
 
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-#source /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/local/share/zsh-you-should-use/you-should-use.plugin.zsh
-#source /usr/local/share/zsh-navigation-tools/zsh-navigation-tools.plugin.zsh
+source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.oh-my-zsh/custom/plugins/zsh-completions/zsh-completions.plugin.zsh
+source ~/.oh-my-zsh/custom/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 
-export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
+# export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern root line)
 ZSH_HIGHLIGHT_STYLES[alias]=fg=blue,bold
 ZSH_HIGHLIGHT_STYLES[builtin]=fg=green,bold
@@ -169,16 +171,19 @@ RPROMPT=''
 
 TIMER_FORMAT='\n~%d'
 
-if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+if [[ $OSTYPE == 'darwin'* ]]; then
+  if type brew &>/dev/null; then
+    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 
-  autoload -Uz compinit
-  compinit
-fi
+    autoload -Uz compinit
+    compinit
+  fi
 
-HB_CNF_HANDLER="$(brew --repository)/Library/Taps/homebrew/homebrew-command-not-found/handler.sh"
-if [ -f "$HB_CNF_HANDLER" ]; then
-  source "$HB_CNF_HANDLER";
+
+  HB_CNF_HANDLER="$(brew --repository)/Library/Taps/homebrew/homebrew-command-not-found/handler.sh"
+  if [ -f "$HB_CNF_HANDLER" ]; then
+    source "$HB_CNF_HANDLER";
+  fi
 fi
 
 export MANPATH="/usr/local/man:$MANPATH"
@@ -210,32 +215,35 @@ alias j='fx'
 alias cat='bat'
 alias zshconfig='code ~/.zshrc'
 alias ohmyzsh='code ~/.oh-my-zsh'
-alias chug='brew update && { brew upgrade; brew upgrade --cask; }; brew autoremove; brew cleanup; brew doctor'
-export HOMEBREW_NO_AUTO_UPDATE=1
 
-export PATH="$HOME/bin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/sbin:$PATH"
-export PATH="/usr/local/opt/openjdk/bin:$PATH"
-export PATH="/usr/local/opt/curl/bin:$PATH"
-export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
+if [[ $OSTYPE == 'darwin'* ]]; then
+  alias chug='brew update && { brew upgrade; brew upgrade --cask; }; brew autoremove; brew cleanup; brew doctor'
+  export HOMEBREW_NO_AUTO_UPDATE=1
+  export PATH="~/Library/Python/3.9/bin:$PATH"
+  export PATH="$(brew --prefix)/opt/findutils/libexec/gnubin:$PATH"
+  export PATH="$HOME/bin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/sbin:$PATH"
+  export PATH="/usr/local/opt/openjdk/bin:$PATH"
+  export PATH="/usr/local/opt/curl/bin:$PATH"
+  export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 
-export PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
-export PATH="~/Library/Python/3.9/bin:$PATH"
-export PATH="$(brew --prefix)/opt/findutils/libexec/gnubin:$PATH"
+  export PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
 
-export IDA_PATH=/Applications/IDA\ Freeware\ 7.6/idabin
-export PATH="$HOME/Desktop/workspace/debloating/retdec/bin:$PATH"
+  test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+  export PATH="/usr/local/opt/python@3.7/bin:$PATH"
+
+  export PATH="/usr/local/opt/ruby@2/bin:/usr/local/lib/ruby/gems/2.7.0/bin:$HOME/.gem/ruby/2.7.0/bin:$PATH"
+
+  export LDFLAGS="-L/usr/local/opt/llvm@12/lib"
+  export CPPFLAGS="-I/usr/local/opt/llvm@12/include"
+  export PATH="/usr/local/opt/llvm@12/bin:$PATH"
+fi
+
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  alias chug='sudo apt update; sudo apt -y upgrade; sudo apt autoremove; sudo apt autoclean; sudo apt clean'
+fi
 
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Desktop/workspace
 export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
 source /usr/local/bin/virtualenvwrapper_lazy.sh
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-export PATH="/usr/local/opt/python@3.7/bin:$PATH"
-
-export PATH="/usr/local/opt/ruby@2/bin:/usr/local/lib/ruby/gems/2.7.0/bin:$HOME/.gem/ruby/2.7.0/bin:$PATH"
-
-export LDFLAGS="-L/usr/local/opt/llvm@12/lib"
-export CPPFLAGS="-I/usr/local/opt/llvm@12/include"
-export PATH="/usr/local/opt/llvm@12/bin:$PATH"
