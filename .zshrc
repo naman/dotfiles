@@ -1,7 +1,7 @@
 
 #### FIG ENV VARIABLES ####
 # Please make sure this block is at the start of this file.
-[ -s ~/.fig/shell/pre.sh ] && source ~/.fig/shell/pre.sh
+# [ -s ~/.fig/shell/pre.sh ] && source ~/.fig/shell/pre.sh
 #### END FIG ENV VARIABLES ####
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -76,13 +76,13 @@ HIST_STAMPS="dd/mm/yyyy"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  alias-finder
+  # alias-finder
   #bgnotify
   #brew
   colored-man-pages
   colorize
   command-not-found
-  common-aliases
+  # common-aliases
   #copydir
   #copyfile
   cp
@@ -91,7 +91,7 @@ plugins=(
   docker
   #docker-compose
   #encode64
-  extract
+  # extract
 #   fancy-ctrl-z
 #   fzf
   #git
@@ -102,7 +102,7 @@ plugins=(
   git-prompt
   #gitignore
   #globalias
-  gnu-utils
+  # gnu-utils
 #   gpg-agent
   history-substring-search
   #jsontools
@@ -129,7 +129,7 @@ plugins=(
   #web-search
   z
   # zsh_reload
-  zsh-interactive-cd
+  # zsh-interactive-cd
   # zsh-navigation-tools
 )
 
@@ -239,8 +239,3 @@ export PATH="/usr/local/opt/ruby@2/bin:/usr/local/lib/ruby/gems/2.7.0/bin:$HOME/
 export LDFLAGS="-L/usr/local/opt/llvm@12/lib"
 export CPPFLAGS="-I/usr/local/opt/llvm@12/include"
 export PATH="/usr/local/opt/llvm@12/bin:$PATH"
-
-#### FIG ENV VARIABLES ####
-# Please make sure this block is at the end of this file.
-[ -s ~/.fig/fig.sh ] && source ~/.fig/fig.sh
-#### END FIG ENV VARIABLES ####
