@@ -33,7 +33,7 @@ chsh -s $(which zsh)
 
 # # setup tmux config
 git clone https://github.com/gpakosz/.tmux.git
-ln -s -f ~/.tmux/.tmux.conf
+ln -s -f ~/dotfiles/.tmux/.tmux.conf
 ln -s -f ~/dotfiles/.tmux.conf.local 
 
 omz reload
