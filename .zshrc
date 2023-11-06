@@ -79,27 +79,27 @@ plugins=(
   # alias-finder
   #bgnotify
   #brew
-  colored-man-pages
-  colorize
-  command-not-found
+  # colored-man-pages
+  # colorize
+  # command-not-found
   # common-aliases
   #copydir
   #copyfile
-  cp
+  # cp
   #dircycle
   #dirhistory
-  docker
+  # docker
   #docker-compose
   #encode64
   # extract
 #   fancy-ctrl-z
 #   fzf
   #git
-  gitfast
-  git-escape-magic
-  git-extras
+  # gitfast
+  # git-escape-magic
+  # git-extras
   #git-flow-avh
-  git-prompt
+  # git-prompt
   #gitignore
   #globalias
   # gnu-utils
@@ -108,18 +108,18 @@ plugins=(
   #jsontools
   #keychain
 #   kubectl
-  man
+  # man
   #nmap
   #osx
   #pass
-  pip
-  ripgrep
+  # pip
+  # ripgrep
   #rsync
   #safe-paste
   #shell-proxy
-  shrink-path
+  # shrink-path
   ssh-agent
-  sudo
+  # sudo
 #   systemadmin
   #taskwarrior
 #   timer
@@ -200,9 +200,6 @@ else
   export EDITOR='vim'
 fi
 
-# Compilation flags
-export ARCHFLAGS="-arch x86_64"
-
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -210,32 +207,29 @@ export ARCHFLAGS="-arch x86_64"
 #
 # Example aliases
 alias c='code .'
-alias l='exa'
-alias j='fx'
-alias cat='bat'
+alias v='vim'
+
 alias zshconfig='code ~/.zshrc'
 alias ohmyzsh='code ~/.oh-my-zsh'
 
 if [[ $OSTYPE == 'darwin'* ]]; then
   alias chug='brew update && { brew upgrade; brew upgrade --cask; }; brew autoremove; brew cleanup; brew doctor'
   export HOMEBREW_NO_AUTO_UPDATE=1
-  export PATH="~/Library/Python/3.9/bin:$PATH"
+  export HOMEBREW_NO_ANALYTICS=1
+  export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+  export HOMEBREW_NO_INSECURE_REDIRECT=1
+
+  # export PATH="~/Library/Python/3.9/bin:$PATH"
   export PATH="$(brew --prefix)/opt/findutils/libexec/gnubin:$PATH"
   export PATH="$HOME/bin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/sbin:$PATH"
-  export PATH="/usr/local/opt/openjdk/bin:$PATH"
+  # export PATH="/usr/local/opt/openjdk/bin:$PATH"
   export PATH="/usr/local/opt/curl/bin:$PATH"
   export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 
   export PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
 
   test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-  export PATH="/usr/local/opt/python@3.7/bin:$PATH"
-
-  export PATH="/usr/local/opt/ruby@2/bin:/usr/local/lib/ruby/gems/2.7.0/bin:$HOME/.gem/ruby/2.7.0/bin:$PATH"
-
-  export LDFLAGS="-L/usr/local/opt/llvm@12/lib"
-  export CPPFLAGS="-I/usr/local/opt/llvm@12/include"
-  export PATH="/usr/local/opt/llvm@12/bin:$PATH"
+  export PATH="/usr/local/opt/python@3.11/bin:$PATH"
 fi
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
@@ -244,6 +238,6 @@ fi
 
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Desktop/workspace
+export PROJECT_HOME=$HOME/work
 export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
 source /usr/local/bin/virtualenvwrapper_lazy.sh
