@@ -76,66 +76,20 @@ HIST_STAMPS="dd/mm/yyyy"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  # alias-finder
-  #bgnotify
-  #brew
-  # colored-man-pages
-  # colorize
-  # command-not-found
-  # common-aliases
-  #copydir
-  #copyfile
-  # cp
-  #dircycle
-  #dirhistory
-  # docker
-  #docker-compose
-  #encode64
-  # extract
-#   fancy-ctrl-z
-#   fzf
-  #git
-  # gitfast
-  # git-escape-magic
-  # git-extras
-  #git-flow-avh
-  # git-prompt
-  #gitignore
-  #globalias
-  # gnu-utils
-#   gpg-agent
-  # zsh-completions
-  #jsontools
-  #keychain
-#   kubectl
-  # man
-  #nmap
-  #osx
-  #pass
-  # pip
-  # ripgrep
-  #rsync
-  #safe-paste
-  #shell-proxy
-  # shrink-path
+  brew
+  colorize
+  common-aliases
+  git
+  pip
   ssh-agent
-  # sudo
-#   systemadmin
-  #taskwarrior
-#   timer
+  sudo
   tmux
-  #urltools
-  #virtualenv
-  #web-search
+  virtualenv
   z
-  # zsh_reload
-  # zsh-interactive-cd
-  # zsh-navigation-tools
   zsh-autosuggestions
   zsh-history-substring-search
   zsh-syntax-highlighting
 )
-
 
 source $ZSH/oh-my-zsh.sh
 
@@ -192,7 +146,6 @@ export MANPATH="/usr/local/man:$MANPATH"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
@@ -208,7 +161,6 @@ fi
 # Example aliases
 alias c='code .'
 alias v='vim'
-
 alias zshconfig='code ~/.zshrc'
 alias ohmyzsh='code ~/.oh-my-zsh'
 
@@ -219,25 +171,16 @@ if [[ $OSTYPE == 'darwin'* ]]; then
   export HOMEBREW_CASK_OPTS="--appdir=/Applications"
   export HOMEBREW_NO_INSECURE_REDIRECT=1
 
-  # export PATH="~/Library/Python/3.9/bin:$PATH"
   export PATH="$(brew --prefix)/opt/findutils/libexec/gnubin:$PATH"
   export PATH="$HOME/bin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/sbin:$PATH"
-  # export PATH="/usr/local/opt/openjdk/bin:$PATH"
   export PATH="/usr/local/opt/curl/bin:$PATH"
   export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
-
   export PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
+  export PATH="/usr/local/opt/python@3.12/bin:$PATH"
 
   test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-  export PATH="/usr/local/opt/python@3.11/bin:$PATH"
 fi
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   alias chug='sudo apt update; sudo apt -y upgrade; sudo apt autoremove; sudo apt autoclean; sudo apt clean'
 fi
-
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/work
-export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
-source /usr/local/bin/virtualenvwrapper_lazy.sh
