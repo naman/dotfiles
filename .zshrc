@@ -207,4 +207,4 @@ if [[ $(hostname) == *"cs.wisc.edu"* ]]; then
   fi
   unset __conda_setup
   # <<< conda initialize <
-endif
+fi
