@@ -184,7 +184,7 @@ fi
 
 # pyenv
 export WORKON_HOME=$HOME/.virtualenvs
-export VIRTUALENVWRAPPER_PYTHON=`which python3.9`
+export VIRTUALENVWRAPPER_PYTHON=`which python3`
 
 # if mac
 if [[ $OSTYPE == 'darwin'* ]]; then
@@ -196,7 +196,7 @@ alias vpn='echo -e "$(cat ~/.uwpass.txt)\n1" | sudo openconnect --protocol=gp --
 alias uw='echo -e "$(cat ~/.uwpass.txt)\n1" | sudo openconnect --protocol=gp --os=mac-intel -u ngupta64  uwmadison.vpn.wisc.edu'
 
 # CSL Machines
-if [[ $(hostname) == *"cs.wisc.edu"* ]]; then
+if [[ $(cat /etc/hosts) == *"cs.wisc.edu"* ]]; then
   # >>> conda initialize >>>
   # !! Contents within this block are managed by 'conda init' !!
   __conda_setup="$('/u/n/_/n/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
@@ -213,7 +213,5 @@ if [[ $(hostname) == *"cs.wisc.edu"* ]]; then
   # <<< conda initialize <
 
   # virtualenvwarpper
-  export WORKON_HOME=$HOME/.virtualenvs
-  export VIRTUALENVWRAPPER_PYTHON=`which python3.9`
   source /u/n/_/n/.local/bin/virtualenvwrapper.sh
 fi
