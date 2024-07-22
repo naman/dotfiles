@@ -185,7 +185,11 @@ fi
 # pyenv
 export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUALENVWRAPPER_PYTHON=`which python3.9`
-source /usr/local/bin/virtualenvwrapper.sh
+
+# if mac
+if [[ $OSTYPE == 'darwin'* ]]; then
+  source /usr/local/bin/virtualenvwrapper.sh
+fi
 
 # VPN aliases
 alias vpn='echo -e "$(cat ~/.uwpass.txt)\n1" | sudo openconnect --protocol=gp --os=mac-intel -u ngupta64  compsci.vpn.wisc.edu'
@@ -207,4 +211,9 @@ if [[ $(hostname) == *"cs.wisc.edu"* ]]; then
   fi
   unset __conda_setup
   # <<< conda initialize <
+
+  # virtualenvwarpper
+  export WORKON_HOME=$HOME/.virtualenvs
+  export VIRTUALENVWRAPPER_PYTHON=`which python3.9`
+  source /u/n/_/n/.local/bin/virtualenvwrapper.sh
 fi
