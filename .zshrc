@@ -4,7 +4,7 @@
 # [ -s ~/.fig/shell/pre.sh ] && source ~/.fig/shell/pre.sh
 #### END FIG ENV VARIABLES ####
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -38,7 +38,7 @@ DISABLE_UPDATE_PROMPT="true"
 # export UPDATE_ZSH_DAYS=13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
-DISABLE_MAGIC_FUNCTIONS="true"
+# DISABLE_MAGIC_FUNCTIONS="true"
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -57,7 +57,7 @@ COMPLETION_WAITING_DOTS="true"
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -78,7 +78,6 @@ HIST_STAMPS="dd/mm/yyyy"
 plugins=(
   brew
   colorize
-  common-aliases
   git
   pip
   ssh-agent
@@ -150,7 +149,7 @@ export LANG=en_US.UTF-8
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
-  export EDITOR='vim'
+  export EDITOR='code'
 fi
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
@@ -159,10 +158,9 @@ fi
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias c='code .'
-alias v='vim'
-alias zshconfig='code ~/.zshrc'
-alias ohmyzsh='code ~/.oh-my-zsh'
+alias c='${EDITOR} .'
+alias zshconfig='${EDITOR} ~/.zshrc'
+alias ohmyzsh='${EDITOR} ~/.oh-my-zsh'
 
 if [[ $OSTYPE == 'darwin'* ]]; then
   alias chug='brew update && { brew upgrade; brew upgrade --cask; }; brew autoremove; brew cleanup; brew doctor'
@@ -173,14 +171,22 @@ if [[ $OSTYPE == 'darwin'* ]]; then
 
   export PATH="$(brew --prefix)/opt/findutils/libexec/gnubin:$PATH"
   export PATH="$HOME/bin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/sbin:$PATH"
-  export PATH="/usr/local/opt/curl/bin:$PATH"
-  export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
-  export PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
+  # export PATH="/usr/local/opt/curl/bin:$PATH"
+  # export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
+  # export PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
   export PATH="/usr/local/opt/python@3.12/bin:$PATH"
-
   test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 fi
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   alias chug='sudo apt update; sudo apt -y upgrade; sudo apt autoremove; sudo apt autoclean; sudo apt clean'
 fi
+
+# pyenv
+export WORKON_HOME=$HOME/.virtualenvs
+export VIRTUALENVWRAPPER_PYTHON=`which python3.9`
+source /usr/local/bin/virtualenvwrapper.sh
+
+# VPN aliases
+alias vpn='echo -e "$(cat ~/.uwpass.txt)\n1" | sudo openconnect --protocol=gp --os=mac-intel -u ngupta64  compsci.vpn.wisc.edu'
+alias uw='echo -e "$(cat ~/.uwpass.txt)\n1" | sudo openconnect --protocol=gp --os=mac-intel -u ngupta64  uwmadison.vpn.wisc.edu'
