@@ -190,3 +190,21 @@ source /usr/local/bin/virtualenvwrapper.sh
 # VPN aliases
 alias vpn='echo -e "$(cat ~/.uwpass.txt)\n1" | sudo openconnect --protocol=gp --os=mac-intel -u ngupta64  compsci.vpn.wisc.edu'
 alias uw='echo -e "$(cat ~/.uwpass.txt)\n1" | sudo openconnect --protocol=gp --os=mac-intel -u ngupta64  uwmadison.vpn.wisc.edu'
+
+# CSL Machines
+if [[ $(hostname) == *"cs.wisc.edu"* ]]; then
+  # >>> conda initialize >>>
+  # !! Contents within this block are managed by 'conda init' !!
+  __conda_setup="$('/u/n/_/n/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+  if [ $? -eq 0 ]; then
+      eval "$__conda_setup"
+  else
+      if [ -f "/u/n/_/n/miniconda3/etc/profile.d/conda.sh" ]; then
+          . "/u/n/_/n/miniconda3/etc/profile.d/conda.sh"
+      else
+          export PATH="/u/n/_/n/miniconda3/bin:$PATH"
+      fi
+  fi
+  unset __conda_setup
+  # <<< conda initialize <
+endif
