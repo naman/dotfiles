@@ -174,21 +174,12 @@ if [[ $OSTYPE == 'darwin'* ]]; then
   # export PATH="/usr/local/opt/curl/bin:$PATH"
   # export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
   # export PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
-  export PATH="/usr/local/opt/python@3.12/bin:$PATH"
+  export PATH="/usr/local/opt/python@3.13/bin:$PATH"
   test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 fi
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   alias chug='sudo apt update; sudo apt -y upgrade; sudo apt autoremove; sudo apt autoclean; sudo apt clean'
-fi
-
-# pyenv
-export WORKON_HOME=$HOME/.virtualenvs
-export VIRTUALENVWRAPPER_PYTHON=`which python3`
-
-# if mac
-if [[ $OSTYPE == 'darwin'* ]]; then
-  source /usr/local/bin/virtualenvwrapper.sh
 fi
 
 # VPN aliases
@@ -211,7 +202,10 @@ if [[ $(cat /etc/hosts) == *"cs.wisc.edu"* ]]; then
   fi
   unset __conda_setup
   # <<< conda initialize <
-
-  # virtualenvwarpper
-  source /u/n/_/n/.local/bin/virtualenvwrapper.sh
 fi
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
