@@ -77,13 +77,10 @@ HIST_STAMPS="dd/mm/yyyy"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   brew
-  colorize
   git
-  pip
   ssh-agent
   tmux
-  virtualenv
-  z
+  zoxide
   zsh-autosuggestions
   zsh-history-substring-search
   zsh-syntax-highlighting
