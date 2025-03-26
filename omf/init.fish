@@ -1,7 +1,7 @@
 
 
 # PATH
-set -xg PATH $HOME/bin /usr/local/bin
+set -xg PATH /opt/homebrew/bin $HOME/bin /usr/local/bin /usr/bin /bin $PATH
 
 # Python
 set -xg PYTHONDONTWRITEBYTECODE 1
