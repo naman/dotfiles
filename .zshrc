@@ -217,3 +217,5 @@ eval "$(pyenv virtualenv-init -)"
 
 export REQUESTS_CA_BUNDLE=$HOME/.pyenv/versions/scraper/lib/python3.13/site-packages/certifi/cacert.pem
 REQUESTS_CA_BUNDLE=$HOME/.pyenv/versions/scraper/lib/python3.13/site-packages/certifi/cacert.pem
+
+. "$HOME/.local/bin/env"
