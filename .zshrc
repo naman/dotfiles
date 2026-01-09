@@ -4,6 +4,7 @@
 # [ -s ~/.fig/shell/pre.sh ] && source ~/.fig/shell/pre.sh
 #### END FIG ENV VARIABLES ####
 # If you come from bash you might have to change your $PATH.
+export PATH="/opt/homebrew/bin:$PATH"
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
@@ -178,44 +179,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   alias chug='sudo apt update; sudo apt -y upgrade; sudo apt autoremove; sudo apt autoclean; sudo apt clean'
 fi
 
-# pyenv
-export WORKON_HOME=$HOME/.virtualenvs
-#export VIRTUALENVWRAPPER_PYTHON=`which python3`
-
-# if mac
-if [[ $OSTYPE == 'darwin'* ]]; then
-  source /usr/local/bin/virtualenvwrapper.sh
-fi
-
 # VPN aliases
 alias vpn='echo -e "$(cat ~/.uwpass.txt)\n1" | sudo openconnect --protocol=gp --os=mac-intel -u ngupta64  compsci.vpn.wisc.edu'
 alias uw='echo -e "$(cat ~/.uwpass.txt)\n1" | sudo openconnect --protocol=gp --os=mac-intel -u ngupta64  uwmadison.vpn.wisc.edu'
-
-# CSL Machines
-if [[ $(cat /etc/hosts) == *"cs.wisc.edu"* ]]; then
-  # >>> conda initialize >>>
-  # !! Contents within this block are managed by 'conda init' !!
-  __conda_setup="$('$HOME/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-  if [ $? -eq 0 ]; then
-      eval "$__conda_setup"
-  else
-      if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
-          . "$HOME/miniconda3/etc/profile.d/conda.sh"
-      else
-          export PATH="$HOME/miniconda3/bin:$PATH"
-      fi
-  fi
-  unset __conda_setup
-  # <<< conda initialize <
-fi
-
-# pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
-export REQUESTS_CA_BUNDLE=$HOME/.pyenv/versions/scraper/lib/python3.13/site-packages/certifi/cacert.pem
-REQUESTS_CA_BUNDLE=$HOME/.pyenv/versions/scraper/lib/python3.13/site-packages/certifi/cacert.pem
-
-. "$HOME/.local/bin/env"
+alias discon='sudo pkill openconnect'
