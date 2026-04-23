@@ -1,11 +1,12 @@
+export SHELL=/bin/zsh
+
 
 #### FIG ENV VARIABLES ####
 # Please make sure this block is at the start of this file.
 # [ -s ~/.fig/shell/pre.sh ] && source ~/.fig/shell/pre.sh
 #### END FIG ENV VARIABLES ####
 # If you come from bash you might have to change your $PATH.
-export PATH="/opt/homebrew/bin:$PATH"
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH="/opt/homebrew/bin:/Users/${USER}/.local/bin:$HOME/bin:/usr/local/bin:$PATH"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -161,6 +162,7 @@ alias ohmyzsh='${EDITOR} ~/.oh-my-zsh'
 
 if [[ $OSTYPE == 'darwin'* ]]; then
   alias chug='brew update && { brew upgrade; brew upgrade --cask; }; brew autoremove; brew cleanup; brew doctor'
+  alias glug='nb update && { nb upgrade; nb upgrade --cask; }; nb autoremove; nb cleanup; nb doctor'
   export HOMEBREW_NO_AUTO_UPDATE=1
   export HOMEBREW_NO_ANALYTICS=1
   export HOMEBREW_CASK_OPTS="--appdir=/Applications"
@@ -183,3 +185,6 @@ fi
 alias vpn='echo -e "$(cat ~/.uwpass.txt)\n1" | sudo openconnect --protocol=gp --os=mac-intel -u ngupta64  compsci.vpn.wisc.edu'
 alias uw='echo -e "$(cat ~/.uwpass.txt)\n1" | sudo openconnect --protocol=gp --os=mac-intel -u ngupta64  uwmadison.vpn.wisc.edu'
 alias discon='sudo pkill openconnect'
+
+# nanobrew
+export PATH="/opt/nanobrew/prefix/bin:$PATH"

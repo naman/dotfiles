@@ -1,7 +1,0 @@
-package brew
-package foreign-env
-package https://github.com/jhillyerd/plugin-git
-package pyenv
-package python
-package zoxide
-theme default
