@@ -2,7 +2,7 @@
 
 set -ex
 
-FAVE_SHELL="fish"
+FAVE_SHELL="zsh"
 
 cd
 
